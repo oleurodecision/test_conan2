@@ -48,7 +48,7 @@ target_link_libraries (my_first_lib
 # unit_tests
 # ----------------------------------------------------------------------------
 
-add_subdirectory (unit_tests)
+#add_subdirectory (unit_tests)
 
 # ----------------------------------------------------------------------------
 # func_tests

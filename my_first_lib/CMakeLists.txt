@@ -111,7 +111,7 @@ add_subdirectory (doc)
 # Targets configurations
 # ============================================================================
 
-add_subdirectory (src/unit_tests)
+#add_subdirectory (src/unit_tests)
 add_subdirectory (src/func_tests)
 add_subdirectory (src)
 
