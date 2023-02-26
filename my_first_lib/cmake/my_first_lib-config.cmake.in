@@ -1,0 +1,12 @@
+@PACKAGE_INIT@
+
+include (CMakeFindDependencyMacro)
+
+#[[ sample 
+find_dependency (Boost @my_first_lib_BOOST_VERSION@ REQUIRED COMPONENTS program_options)
+]]
+
+if (NOT TARGET my_first_lib::my_first_lib)
+    include ("${CMAKE_CURRENT_LIST_DIR}/my_first_lib-targets.cmake")
+endif ()
+

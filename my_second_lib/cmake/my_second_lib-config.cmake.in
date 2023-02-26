@@ -1,0 +1,10 @@
+@PACKAGE_INIT@
+
+include (CMakeFindDependencyMacro)
+
+find_dependency (my_first_lib)
+
+if (NOT TARGET my_second_lib::my_second_lib)
+    include ("${CMAKE_CURRENT_LIST_DIR}/my_second_lib-targets.cmake")
+endif ()
+
