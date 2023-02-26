@@ -31,7 +31,7 @@ target_include_directories (my_executable
 
 target_link_libraries (my_executable
 	PUBLIC
-		my_third_lib::my_third_lib
+		${PROJECT_NAME}::my_third_lib
 	)
 
 # ============================================================================

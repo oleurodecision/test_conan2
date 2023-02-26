@@ -9,7 +9,7 @@ from inspect import getsourcefile
 import os
 import re
 
-class MyFirstLibCppConan(ConanFile):
+class MyThirdLibConan(ConanFile):
     package_type = "library"
     #description = None
     #homepage = None
@@ -88,7 +88,7 @@ class MyFirstLibCppConan(ConanFile):
 
     def layout(self):
         self.output.warning("=== layout")
-        #cmake_layout(self)
+        cmake_layout(self)
         self.output.warning(f"*** source_folder {self.source_folder}")
         self.output.warning(f"*** export_sources_folder {self.export_sources_folder}")
         self.output.warning(f"*** build_folder {self.build_folder}")
@@ -110,14 +110,15 @@ class MyFirstLibCppConan(ConanFile):
 
         # set cpp package information for package consumption
         # see also package_info() and self.cpp_info
-        self.cpp.package.libs = ["my_first_lib"]
+        self.cpp.package.libs = ["my_third_lib"]
         self.cpp.package.builddirs = [cmake_config_path]
 
         # set cpp source and build information for editable consumption
         self.cpp.build.builddirs = [os.path.join("install", cmake_config_path)]
 
-    #def requirements(self):
-    #    self.output.warning("=== requirements")
+    def requirements(self):
+        self.output.warning("=== requirements")
+        self.requires("my_second_lib/0.0")
 
     #def package_id(self):
     #    self.output.warning("=== package_id")
@@ -132,7 +133,7 @@ class MyFirstLibCppConan(ConanFile):
     def build_requirements(self):
         self.output.warning("=== build_requirements")
         #self.build_requires()
-        #self.test_requires("gtest/1.13.0")
+        self.test_requires("gtest/1.13.0")
 
     #def build_id(self):
     #    self.output.warning("=== build_id")
@@ -162,7 +163,7 @@ class MyFirstLibCppConan(ConanFile):
         cmake = CMake(self)
         cmake.configure()
         cmake.build()
-        #cmake.test(target="unit_tests")
+        cmake.test(target="unit_tests")
 
     def package(self):
         self.output.warning("=== package")
